@@ -46,16 +46,15 @@
     margin-left: 10px;
 }
 
-.new-event .input-group-addon {
-    position: 0px;
-}
-
 input.ng-invalid.ng-dirty {
     border: 1px solid red;
 }
 
 #editPorfileFormId .input-group-addon {
-    min-width: 100px;
+    min-width: 120px;
 }
 
+#editPorfileFormId .input-group-addon-short {
+    min-width: 40px;
+}
 

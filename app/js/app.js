@@ -22,6 +22,11 @@ var eventsApp = angular.module("eventsApp", ['ngResource', 'ngRoute']).
             }
         });
 
+        $routeProvider.when('/user-profile', {
+            templateUrl: 'templates/EditProfile.html',
+            controller: 'EditProfileController'
+        });
+
         $routeProvider.when('/sample-directive', {
             templateUrl: 'templates/SampleDirective.html',
             controller: 'SampleDirectiveController'

@@ -1,0 +1,48 @@
+<div class="main-container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">User Profile</h4>
+        </div>
+        <ng-form role="form" id="editPorfileFormId">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        <img ng-src="{{getGravatarUrl(email)}}" alt="Gravatar photo" class="img-responsive img-thumbnail"/>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">User Name</span>
+                            <input type="text" placeholder="User name " class="form-control" ng-model="username"/>
+                            <span class="input-group-addon">Password</span>
+                            <input type="password" placeholder="Password " class="form-control" ng-model="password"/>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Name</span>
+                            <input type="text" placeholder="Name" class="form-control" ng-model="name"/>
+                            <span class="input-group-addon">Email Address</span>
+                            <input type="email" placeholder="Email" class="form-control" ng-model="email"/>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Address</span>
+                            <input type="text" placeholder="Address" class="form-control" ng-model="location.address"/>
+                            <span class="input-group-addon input-group-addon-short">City</span>
+                            <input type="text" placeholder="City" class="form-control" ng-model="location.city"/>
+                            <span class="input-group-addon input-group-addon-short">Province</span>
+                            <input type="text" placeholder="Province" class="form-control" ng-model="location.province"/>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- panel-body -->
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-2 pull-right">
+                        <button class="btn btn-danger form-control">Cancel</button>
+                    </div>
+                    <div class="col-md-2 pull-right ">
+                        <button class="btn btn-primary form-control">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div> <!-- panel -->
+</div> <!-- main-container -->
