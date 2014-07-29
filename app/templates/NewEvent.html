@@ -1,0 +1,51 @@
+<div class="main-container" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">{{event.name | eventName}}</h3>
+        </div>
+        <ng-form name="newEventForm" id="name-event-form" role="form">
+            <div class="panel-body">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-font"></span>
+                    </span>
+                    <input required type="text" class="form-control" ng-model="event.name" placeholder="Event Name"/>
+                </div>
+                <div class="input-group form-group">
+                     <span class="input-group-addon">
+                         <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                    <input date-keys-only required type="text" class="form-control" ng-model="event.date" placeholder="Date - DD/MM/YYYY" ng-pattern="/\d\d/\d\d/\d\d\d\d/"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    <input type="text" class="form-control" ng-model="event.time" placeholder="Time - HH:MM AM/PM"/>
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" ng-model="event.location.address" placeholder="Address"/>
+                    <span class="input-group-addon">City: </span>
+                    <input type="text" class="form-control" ng-model="event.location.city" placeholder="City"/>
+                    <span class="input-group-addon">State: </span>
+                    <input type="text" class="form-control" ng-model="event.location.province" placeholder="Province"/>
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+                    <input type="text" class="form-control" ng-model="event.imageUrl" placeholder="Pictore URL"/>
+                </div>
+                <img ng-src="{{event.imageUrl}}" ng-show="event.imageUrl" alt="Event Picture" class="img-responsive img-thumbnail"/>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-2 pull-right">
+                        <button type="button" class="btn btn-info form-control" ng-click="submitEvent(event, newEventForm)"
+                                ng-disabled="newEventForm.$invalid">Submit</button>
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        <button type="button" class="btn btn-primary form-control" ng-click="cancelEdit()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div> <!-- panel -->
+</div> <!--main-controller-->

@@ -1,0 +1,91 @@
+<div class="main-container ">
+    <img  ng-src="{{event.imageUrl}}" alt="{{event.name}}"/>
+    <div class="row">
+        <div class="col-md-4">
+            <h2 ng-bind-template="{{event.name}}"></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div><strong>Date: {{event.date}}</strong></div>
+            <div><strong>Time: {{event.time}}</strong></div>
+        </div>
+        <div class="col-md-4">
+            <address>
+                <strong>Address:</strong><br/>
+                {{event.location.address}}<br/>
+                {{event.location.city}}, {{event.location.province}}
+            </address>
+        </div>
+    </div>
+    <hr/>
+
+    <div class="row" id="sessions-panel-title">
+        <h3 class="pull-left">Sessions </h3>
+        <div class="btn-group" data-toggle="buttons" >
+            <label type="button" class="btn btn-default" ng-click="toggleSortField('name')"
+                    ng-class="{active: isSelectedSortField('name')}">
+                <input type="radio" value="name" >Name
+            </label>
+            <label type="button" class="btn btn-default" ng-click="toggleSortField('upVoteCount')"
+                   ng-class="{active: isSelectedSortField('upVoteCount')}">
+                <input type="radio" value="upVoteCount">Votes
+            </label>
+            <label type="button" class="btn btn-default disabled" ng-click="toggleSortField('duration')"
+                   ng-class="{active: isSelectedSortField('duration')}">
+                <input type="radio" value="duration">Duration
+            </label>
+        </div>
+         <div class="btn-group" data-toggle="buttons" >
+            <label type="button" class="btn btn-default" ng-class="{active: isSelectedAscOrDsc('+')}"
+                   ng-click="toggleAscOrDsc('+')">
+                <input type="radio" value="name" >Asc
+            </label>
+            <label type="button" class="btn btn-default" ng-class="{active: isSelectedAscOrDsc('-')}"
+                    ng-click="toggleAscOrDsc('-')">
+                <input type="radio" ng-model="sortorder" value="upVoteCount">Dsc
+            </label>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-default">{{difficultyLevel | difficulty}}</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only"></span>
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+                <li ng-class="{active: isSelectedDifficultyLevel('')}">
+                    <a ng-click="setDifficultyLevel('')" href>All</a>
+                </li>
+                <li ng-class="{active: isSelectedDifficultyLevel('Introductory')}">
+                    <a ng-click="setDifficultyLevel('Introductory')" href>Introductory</a>
+                </li>
+                <li ng-class="{active: isSelectedDifficultyLevel('Intermediate')}">
+                    <a ng-click="setDifficultyLevel('Intermediate')" href>Intermediate</a>
+                </li>
+                <li ng-class="{active: isSelectedDifficultyLevel('Advanced')}">
+                    <a ng-click="setDifficultyLevel('Advanced')" href>Advanced</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="list-group ">
+        <li class="list-group-item row session" ng-repeat="session in event.sessions | orderBy:sortorder | filter: {level: difficultyLevel}">
+            <div class="col-md-9 col-sm-6 col-xs-6">
+                <h4 class="list-group-item-heading">{{session.name}}</h4>
+                <p class="list-group-item-text">
+                    <h6><i>-- {{session.creatorName}}</i></h6>
+                    <span>Duration: <strong>{{session.duration}}</strong></span>
+                    <br/>
+                    <span>Level: <strong>{{session.level}}</strong></span>
+                    <p>{{session.abstract}}</p>
+                </p>
+            </div>
+            <div class="pull-right well">
+                <vote upvote="upVoteSession(session)" downvote="downVoteSession(session)" count="session.upVoteCount"/>
+           </div>
+        </li>
+    </ul>
+</div> <!-- outer container -->

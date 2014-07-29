@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Event Registration Angular App
+    </title>
+
+    <link rel="stylesheet" href="css/libs/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/libs/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/app.css"
+</head>
+
+<body>
+
+<div class="container-fluid" ng-controller="CompileSampleController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Compile Server sample</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Name:</span>
+                        <input class="form-control" type="text" ng-model="name"/>
+
+                        <span class="input-group-addon">Markup:</span>
+                        <input class="form-control" type="text" ng-model="markup"/>
+                    </div>
+                </div> <!--col-md-10 -->
+                <div class="col-md-2 pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="appendDivToElement(markup)">Append</button>
+                </div>
+            </div>
+            <div id="append-here"></div>
+
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+</div> <!-- container-fluid -->
+<script type="text/javascript" src="js/libs/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/libs/underscore-1.6.0.min.js"></script>
+<script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/libs/angular-1.3.0-b15.js"></script>
+<script type="text/javascript" src="js/libs/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="js/libs/angular-resource-1.3.0-b17.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers/CompileSampleController.js"></script>
+
+</body>
+</html>

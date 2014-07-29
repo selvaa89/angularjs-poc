@@ -1,0 +1,10 @@
+<div class="main-container">
+    <h2>Events</h2>
+    <div class="row">
+        <div class="col-md-6" ng-repeat="event in events | orderBy: sortoreder">
+            <div class="well hoverwell">
+                <event-thumbnail event="event"/>
+            </div>
+        </div>
+    </div>
+</div>
