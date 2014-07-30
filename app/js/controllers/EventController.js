@@ -1,6 +1,6 @@
 "use strict";
 
-eventsApp.controller('EventController', function($scope, eventData, $routeParams, $route) {
+eventsApp.register.controller('EventController', function($scope, eventData, $routeParams, $route) {
     $scope.sortField = 'name';
     $scope.ascOrDsc = '+';
     $scope.sortorder = '+name';

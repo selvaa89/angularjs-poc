@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.directive('dateKeysOnly', function () {
+eventsApp.register.directive('dateKeysOnly', function () {
     return {
         restrict: 'A',
         link: function(scope, element, attr, controller) {

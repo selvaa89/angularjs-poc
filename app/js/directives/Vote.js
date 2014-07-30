@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.directive('vote', function () {
+eventsApp.register.directive('vote', function () {
     return {
         restrict: 'E',
         templateUrl: 'templates/directives/vote.html',
