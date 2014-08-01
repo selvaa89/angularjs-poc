@@ -37,16 +37,22 @@ define([], function () {
 
         this.route = function (routeConfig) {
 
-            var resolve = function (baseName, templateURL) {
+            var resolve = function (baseName, templateURL, resolveConfig) {
                 var routeDef = {};
                 routeDef.templateUrl = templateURL;
                 routeDef.controller = baseName;
+
                 routeDef.resolve = {
                     load: ['$q', '$rootScope', function ($q, $rootScope) {
                         var dependencies = [routeConfig.getControllersDirectory() + baseName + '.js'];
                         return resolveDependencies($q, $rootScope, dependencies);
                     }]
                 };
+
+                if (resolveConfig) {
+                    angular.extend(routeDef.resolve, resolveConfig);
+                    debugger
+                }
 
                 return routeDef;
             },
