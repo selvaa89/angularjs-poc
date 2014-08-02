@@ -1,6 +1,33 @@
 'use strict';
 
-var eventsApp = angular.module("eventsApp", ['ngResource', 'ngRoute']).
+define([], function () {
+    var app = angular.module('eventsApp', ['routeResolverServices', 'ngResource', 'ngRoute']);
+    window.eventsApp = app;
+    app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
+        function ($routeProvider, routeResolverProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+            app.register =
+            {
+                controller: $controllerProvider.register,
+                directive: $compileProvider.directive,
+                filter: $filterProvider.register,
+                factory: $provide.factory,
+                service: $provide.service
+            };
+
+            //Define routes - controllers will be loaded dynamically
+            var route = routeResolverProvider.route;
+
+            $routeProvider
+                .when('/newEvent', route.resolve('EditEventController', 'templates/NewEvent.html'))
+                .when('/events', route.resolve('EventsListController', 'templates/EventsList.html'))
+                .when('/event/:eventId', route.resolve('EventController', 'templates/EventDetails.html'))
+                .when('/sample-directive', route.resolve('SampleDirectiveController', 'templates/SampleDirective.html'))
+                .otherwise({ redirectTo: '/events' });
+        }]);
+    return app;
+});
+
+/*var eventsApp = angular.module("eventsApp", ['ngResource', 'ngRoute']).
     config(function($routeProvider) {
         $routeProvider.when('/newEvent',{
             templateUrl: 'templates/NewEvent.html',
@@ -34,3 +61,4 @@ var eventsApp = angular.module("eventsApp", ['ngResource', 'ngRoute']).
 
         $routeProvider.otherwise({redirectTo: '/events'});
     });
+*/

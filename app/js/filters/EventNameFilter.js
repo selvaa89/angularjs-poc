@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.filter('eventName', function() {
+eventsApp.register.filter('eventName', function() {
     return function(eventName) {
         switch(eventName) {
             case null:

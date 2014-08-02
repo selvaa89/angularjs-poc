@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.directive('collapsible', function () {
+eventsApp.register.directive('collapsible', function () {
     return {
         restrict: 'E',
         replace: false,

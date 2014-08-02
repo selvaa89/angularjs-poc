@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.directive('myDirective', function($compile) {
+eventsApp.register.directive('myDirective', function($compile) {
     return {
         restrict: 'E',
         link: function($scope, element, attrs, controller) {
