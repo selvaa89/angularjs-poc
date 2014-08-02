@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.factory('eventData', function($resource) {
+eventsApp.register.factory('eventData', function($resource) {
     var resource = $resource('/data/event/:id', {id: '@id'});
 
     return {

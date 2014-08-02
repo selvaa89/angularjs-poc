@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.controller('CacheController', function($scope, eventsAppCacheService){
+eventsApp.register.controller('CacheController', function($scope, eventsAppCacheService){
     $scope.keys = [];
     $scope.addToCache = function(key, value) {
         eventsAppCacheService.put(key, value);

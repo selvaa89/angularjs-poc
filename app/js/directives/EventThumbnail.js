@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.directive('eventThumbnail', function () {
+eventsApp.register.directive('eventThumbnail', function () {
     return {
         restrict: 'E',
         replace: true,
