@@ -1,27 +1,49 @@
 'use strict';
 
-describe('EventListController', function () {
-    var scope, $controllerConstructor;
-    var mockEventData;
+describe("EventListController", function () {
 
-    beforeEach(module("eventsApp"));
+    var $controllerConstructor, scope, mockEventDataSvc;
 
-    beforeEach(inject(function ($controller, $rootScope) {
-        scope = $rootScope.$new();
-        mockEventData = sinon.stub({getAllEvents: function(){}});
+    beforeEach(module('eventsApp'));
+
+    beforeEach(inject(function ($controller, $rootScope, $location) {
         $controllerConstructor = $controller;
+        scope = $rootScope.$new();
+
+        mockEventDataSvc = sinon.stub({
+            getAllEvents: function(){}});
     }));
 
-    it("Should set the scope events to the results of eventData.getAllEvents", function () {
-        var mockEvents = {};
-        mockEventData.getAllEvents.returns(mockEvents);
+    xit("should get all the events from eventsData server", function () {
+        var mockEventData = {
+            id: 5,
+            name: 'AngularJS Boot camp'
+        };
 
-        var ctrl = $controllerConstructor("EventsListController", {
-            $scope: scope, eventData: mockEventData
+        mockEventDataSvc.getAllEvents.returns(mockEventData);
+        var mockEventListsController = $controllerConstructor('EventsListController', {
+            $scope: scope, $location: {}, eventData: mockEventDataSvc
+        })
+
+        expect(scope.events).toBe(mockEventData);
+    });
+
+    it("should call navigateToDetails with event id of 23", function () {
+        var mockEvent = {
+            id: 24
+        };
+
+        var mockLocation = sinon.stub({url: function () {}});
+
+        var mockEventsListController = $controllerConstructor('EventsListController', {
+            $scope: scope, $location: mockLocation, eventData: mockEventDataSvc
         });
 
-        expect(scope.events).toBe(mockEvents);
+        scope.navigateToDetails(mockEvent);
+
+        expect(mockLocation.url.calledWith('/event/24')).toBe(true);
     });
 });
+
 
 
