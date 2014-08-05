@@ -21,6 +21,7 @@ define([], function () {
                 .when('/events', route.resolve('EventsListController', 'templates/EventsList.html'))
                 .when('/event/:eventId', route.resolve('EventController', 'templates/EventDetails.html'))
                 .when('/sample-directive', route.resolve('SampleDirectiveController', 'templates/SampleDirective.html'))
+                .when('/users', {templateUrl: '../../userapp/index.html'})
                 .otherwise({ redirectTo: '/events' });
         }]);
     return eventsApp;
